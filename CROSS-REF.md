@@ -6,7 +6,7 @@ content hash = git tree hash of the pinned rev.
 
 | Interface consumed | Repo | Pinned rev | Content hash | Notes |
 |---|---|---|---|---|
-| mycelium-cli-common | https://github.com/tzervas/mycelium-cli-common | `c673fafdd1bcecb713e3560689af6ab152033867` | tree `(tree hash: fetch dep rev locally to resolve)` | Rust API of `mycelium-cli-common` (see monorepo `docs/api-index/INDEX.md#mycelium-cli-common`) |
+| mycelium-cli-common | https://github.com/tzervas/mycelium-cli-common | `c673fafdd1bcecb713e3560689af6ab152033867` | tree `c6fc7df3db94db6de08a7004729b1c37a7f5fc76` | Rust API of `mycelium-cli-common` (see monorepo `docs/api-index/INDEX.md#mycelium-cli-common`) |
 
 **Owning docs:** see monorepo `docs/Doc-Index.md`.
 **Source provenance:** extracted from `tzervas/mycelium` archive `aad96b7a…`; fixed by
