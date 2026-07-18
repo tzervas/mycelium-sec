@@ -16,8 +16,35 @@ workspace = true
 # The bin orchestrates the existing scripts/checks/{secrets,deny}.sh via std::process (no new crate).
 # M-643: the shared CLI substrate. The bin reuses it for arg handling; the `.myc` walk stays in this
 # crate's own `collect_myc` (lib-public, untouched). In-workspace path dep, std-only (KC-3).
-mycelium-cli-common = { path = "../mycelium-cli-common" }
+mycelium-cli-common = { git = "https://github.com/tzervas/mycelium-cli-common", rev = "c673fafdd1bcecb713e3560689af6ab152033867" }
 
 [[bin]]
 name = "myc-sec"
 path = "src/bin/myc-sec.rs"
+
+# --- standalone workspace root (course-correction Phase B, 2026-07-18; steer handoff §6.2) ---
+[workspace]
+
+[workspace.package]
+version = "0.464.0"
+edition = "2021"
+rust-version = "1.96.1"
+license = "MIT"
+repository = "https://github.com/tzervas/mycelium-sec"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+blake3 = "1"
+
+[workspace.lints.rust]
+# ADR-014: unsafe permitted-but-documented; the check is clippy::undocumented_unsafe_blocks.
+unsafe_code = "allow"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+undocumented_unsafe_blocks = "warn"
+
+# G2 never-silent arithmetic: release builds panic on overflow (monorepo parity).
+[profile.release]
+overflow-checks = true
